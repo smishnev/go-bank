@@ -1,0 +1,1 @@
+# go-bank initgit add README.mdgit commit -m first commitgit branch -M maingit remote add origin git@github.com:smishnev/go-bank.gitgit push -u origin main
