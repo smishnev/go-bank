@@ -12,6 +12,10 @@ const accountBalanceFile = "balance.txt"
 func main() {
 	var accountBalance, err = fileops.GetFloatFromFile(accountBalanceFile, 1000)
 
+	pointer()
+
+	fmt.Println("--------------------")
+
 	if err != nil {
 		fmt.Println("Error")
 		fmt.Println(err)
