@@ -26,10 +26,10 @@ func structs() {
 		createdAt: time.Now(),
 	}
 
-	outputUserDetails(appUser)
+	outputUserDetails(&appUser)
 }
 
-func outputUserDetails(appUser user) {
+func outputUserDetails(appUser *user) {
 	fmt.Println(appUser.firstName, appUser.lastName, appUser.birthDate, appUser.createdAt)
 }
 
