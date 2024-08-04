@@ -20,6 +20,8 @@ func structs() {
 		return
 	}
 
+	admin := user.NewAdmin("test@example.com", "test123")
+
 	appUser.OutputUserDetails()
 	appUser.ClearUserName()
 	appUser.OutputUserDetails()
