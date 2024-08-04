@@ -14,6 +14,8 @@ func main() {
 
 	pointer()
 
+	structs()
+
 	fmt.Println("--------------------")
 
 	if err != nil {
