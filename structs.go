@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"example.com/bank/user"
+	"example.com/main/user"
 )
 
 func structs() {
@@ -20,7 +20,9 @@ func structs() {
 		return
 	}
 
-	admin := user.NewAdmin("test@example.com", "test123")
+	admin, err := user.NewAdmin("test@example.com", "test123")
+
+	fmt.Println("Admin: ", admin)
 
 	appUser.OutputUserDetails()
 	appUser.ClearUserName()

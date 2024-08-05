@@ -27,8 +27,8 @@ func (appUser *User) ClearUserName() {
 	appUser.firstName = ""
 	appUser.lastName = ""
 }
- 
-func NewAdmin(email string, password string) Admin {
+
+func NewAdmin(email string, password string) (*Admin, error) {
 	if email == "" || password == "" {
 		return nil, errors.New("Email and password are required")
 	}
@@ -41,7 +41,7 @@ func NewAdmin(email string, password string) Admin {
 			lastName:  "Admin",
 			birthDate: "-----",
 			createdAt: time.Now(),
-		}
+		},
 	}, nil
 }
 
