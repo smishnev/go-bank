@@ -8,6 +8,7 @@ import (
 	"bufio"
 
 	"example.com/main/note"
+	"example.com/main/todo"
 	// "example.com/main/fileops"
 	// "github.com/Pallinder/go-randomdata"
 )
@@ -86,6 +87,14 @@ func main() {
 	// }
 
 	title, content := getNoteData()
+	todoText := getUserInput("Todo text: ")
+
+	todo, err := todo.New(todoText)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	userNote, err := note.New(title, content)
 
@@ -94,8 +103,17 @@ func main() {
 		return
 	}
 
-	userNote.Display()
+	todo.Display()
+	err = todo.Save()
 
+	if err != nil {
+		fmt.Println("Error saving todo")
+		return
+	}
+
+	fmt.Println("Todo saved successfully")
+
+	userNote.Display()
 	err = userNote.Save()
 
 	if err != nil {
