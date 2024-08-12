@@ -15,6 +15,10 @@ import (
 
 const accountBalanceFile = "balance.txt"
 
+type saver interface {
+	Save() error
+}
+
 func main() {
 	// var accountBalance, err = fileops.GetFloatFromFile(accountBalanceFile, 1000)
 
@@ -104,25 +108,32 @@ func main() {
 	}
 
 	todo.Display()
-	err = todo.Save()
+	err = saveData(todo)
 
 	if err != nil {
-		fmt.Println("Error saving todo")
 		return
 	}
 
-	fmt.Println("Todo saved successfully")
-
 	userNote.Display()
-	err = userNote.Save()
+	err = saveData(userNote)
+
+	if err != nil {
+		return
+	}
+
+}
+
+func saveData(data saver) error {
+	err := data.Save()
 
 	if err != nil {
 		fmt.Println("Error saving note")
-		return
+		return err
 	}
 
 	fmt.Println("Note saved successfully")
 
+	return nil
 }
 
 func getNoteData() (string, string) {
@@ -150,3 +161,5 @@ func getUserInput(promptText string) string {
 
 	return text
 }
+
+//101
