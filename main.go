@@ -99,6 +99,10 @@ func main() {
 	printSomething(1.5)
 	printSomething("Text")
 
+	result := genericFunction(1, 2)
+
+	fmt.Println(result)
+
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text: ")
 
@@ -198,4 +202,8 @@ func printSomething(value interface{}) {
 	// case string:
 	// 	fmt.Println("string", value)
 	// }
+}
+
+func genericFunction[T int | float64 | string](a, b T) T {
+	return a + b
 }
