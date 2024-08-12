@@ -95,6 +95,10 @@ func main() {
 
 	// }
 
+	printSomething(1)
+	printSomething(1.5)
+	printSomething("Text")
+
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text: ")
 
@@ -167,4 +171,13 @@ func getUserInput(promptText string) string {
 	return text
 }
 
-//101
+func printSomething(value interface{}) {
+	switch value.(type) {
+	case int:
+		fmt.Println("int", value)
+	case float64:
+		fmt.Println("float64", value)
+	case string:
+		fmt.Println("string", value)
+	}
+}
