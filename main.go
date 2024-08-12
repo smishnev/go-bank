@@ -172,12 +172,30 @@ func getUserInput(promptText string) string {
 }
 
 func printSomething(value interface{}) {
-	switch value.(type) {
-	case int:
-		fmt.Println("int", value)
-	case float64:
-		fmt.Println("float64", value)
-	case string:
-		fmt.Println("string", value)
+	intVal, ok := value.(int)
+
+	if ok {
+		fmt.Println("integer", intVal+1)
 	}
+
+	intFloat, ok := value.(float64)
+
+	if ok {
+		fmt.Println("intFloat", intFloat+1.0)
+	}
+
+	strVal, ok := value.(string)
+
+	if ok {
+		fmt.Println("string", strVal)
+	}
+
+	// switch value.(type) {
+	// case int:
+	// 	fmt.Println("int", value)
+	// case float64:
+	// 	fmt.Println("float64", value)
+	// case string:
+	// 	fmt.Println("string", value)
+	// }
 }
