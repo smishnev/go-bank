@@ -200,26 +200,73 @@ type outputtable interface {
 // 	return a + b
 // }
 
-func main() {
-	price := [4]float64{1.1, 2.2, 3.3, 4.4}
-	fmt.Println(price)
+// Arrays
+// func main() {
+// 	price := [4]float64{1.1, 2.2, 3.3, 4.4}
+// 	fmt.Println(price)
 
-	// Slice
-	featurePrice := price[1:3]
-	fmt.Println(featurePrice)
+// 	// Slice
+// 	featurePrice := price[1:3]
+// 	fmt.Println(featurePrice)
 
-	//Dynamic array
+// 	//Dynamic array
 
-	dynamicArray := []float64{1.1, 2.2}
-	dynamicArray[1] = 3.3
+// 	dynamicArray := []float64{1.1, 2.2}
+// 	dynamicArray[1] = 3.3
 
-	updatedArray := append(dynamicArray, 4.4)
+// 	updatedArray := append(dynamicArray, 4.4)
 
-	//to re-assigning
+// 	//to re-assigning
+// 	dynamicArray = append(dynamicArray, 4.4)
+// 	fmt.Println(updatedArray, dynamicArray)
 
-	dynamicArray = append(dynamicArray, 4.4)
-	fmt.Println(updatedArray, dynamicArray)
+// }
 
+// Maps
+
+type floatMap map[string]float64
+
+func (m floatMap) output() {
+	fmt.Println(m)
 }
 
-//116
+func main() {
+	// websites := map[string]string{
+	// 	"Google":  "https://google.com",
+	// 	"Youtube": "https://youtube.com",
+	// }
+
+	// fmt.Println((websites))
+	// fmt.Println(websites["Google"])
+
+	// websites["Facebook"] = "https://facebook.com"
+	// fmt.Println(websites)
+
+	// delete(websites, "Facebook")
+
+	// fmt.Println(websites)
+
+	userName := make([]string, 2, 5)
+
+	userName = append(userName, "John")
+	userName = append(userName, "Jane")
+
+	fmt.Println(userName)
+
+	courseRating := make(floatMap, 3)
+
+	courseRating["JS"] = 4.7
+	courseRating["Python"] = 4.8
+	courseRating["Golang"] = 4.9
+
+	courseRating.output()
+
+	for index, value := range userName {
+		fmt.Println(index, ":", value)
+	}
+
+	fmt.Println("Rating: ")
+	for key, value := range courseRating {
+		fmt.Println(key, ":", value)
+	}
+}
