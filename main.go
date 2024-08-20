@@ -274,11 +274,22 @@ type outputtable interface {
 type transformFunc func(int) int
 
 func main() {
-	number := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	number := []int{1, 2, 3, 4, 5}
+	anotherNumber := []int{5, 6, 7, 8, 9, 10}
 
-	fmt.Println(transformNumber(&number, double))
+	// fmt.Println(transformNumber(&number, double))
 
-	fmt.Println(transformNumber(&number, triple))
+	// fmt.Println(transformNumber(&number, triple))
+
+	transformerFc1 := getTransformerFunc(&number)
+	transformerFc2 := getTransformerFunc(&anotherNumber)
+
+	transformerNumber1 := transformNumber(&number, transformerFc1)
+	transformerNumber2 := transformNumber(&anotherNumber, transformerFc2)
+
+	fmt.Println(transformerNumber1)
+	fmt.Println(transformerNumber2)
+
 }
 
 func transformNumber(number *[]int, transform transformFunc) []int {
@@ -296,4 +307,12 @@ func double(number int) int {
 
 func triple(number int) int {
 	return number * 3
+}
+
+func getTransformerFunc(number *[]int) transformFunc {
+	if (*number)[0] == 1 {
+		return double
+	}
+
+	return triple
 }
