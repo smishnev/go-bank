@@ -224,49 +224,76 @@ type outputtable interface {
 
 // Maps
 
-type floatMap map[string]float64
+// type floatMap map[string]float64
 
-func (m floatMap) output() {
-	fmt.Println(m)
-}
+// func (m floatMap) output() {
+// 	fmt.Println(m)
+// }
+
+// func main() {
+// websites := map[string]string{
+// 	"Google":  "https://google.com",
+// 	"Youtube": "https://youtube.com",
+// }
+
+// fmt.Println((websites))
+// fmt.Println(websites["Google"])
+
+// websites["Facebook"] = "https://facebook.com"
+// fmt.Println(websites)
+
+// delete(websites, "Facebook")
+
+// fmt.Println(websites)
+
+// userName := make([]string, 2, 5)
+
+// userName = append(userName, "John")
+// userName = append(userName, "Jane")
+
+// fmt.Println(userName)
+
+// courseRating := make(floatMap, 3)
+
+// courseRating["JS"] = 4.7
+// courseRating["Python"] = 4.8
+// courseRating["Golang"] = 4.9
+
+// courseRating.output()
+
+// for index, value := range userName {
+// 	fmt.Println(index, ":", value)
+// }
+
+// fmt.Println("Rating: ")
+// for key, value := range courseRating {
+// 	fmt.Println(key, ":", value)
+// }
+// }
+
+type transformFunc func(int) int
 
 func main() {
-	// websites := map[string]string{
-	// 	"Google":  "https://google.com",
-	// 	"Youtube": "https://youtube.com",
-	// }
+	number := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-	// fmt.Println((websites))
-	// fmt.Println(websites["Google"])
+	fmt.Println(transformNumber(&number, double))
 
-	// websites["Facebook"] = "https://facebook.com"
-	// fmt.Println(websites)
+	fmt.Println(transformNumber(&number, triple))
+}
 
-	// delete(websites, "Facebook")
+func transformNumber(number *[]int, transform transformFunc) []int {
+	transformedNumber := []int{}
 
-	// fmt.Println(websites)
-
-	userName := make([]string, 2, 5)
-
-	userName = append(userName, "John")
-	userName = append(userName, "Jane")
-
-	fmt.Println(userName)
-
-	courseRating := make(floatMap, 3)
-
-	courseRating["JS"] = 4.7
-	courseRating["Python"] = 4.8
-	courseRating["Golang"] = 4.9
-
-	courseRating.output()
-
-	for index, value := range userName {
-		fmt.Println(index, ":", value)
+	for _, value := range *number {
+		transformedNumber = append(transformedNumber, transform(value))
 	}
+	return transformedNumber
+}
 
-	fmt.Println("Rating: ")
-	for key, value := range courseRating {
-		fmt.Println(key, ":", value)
-	}
+func double(number int) int {
+	return number * 2
+}
+
+func triple(number int) int {
+	return number * 3
 }
